@@ -1,0 +1,55 @@
+kubectl get pods
+kubectl get pods,svc
+
+kubectl create -f my_nginx_pod.yaml
+
+kubectl delete pods myapp-pod
+
+kubectl describe pod myapp-pod 
+
+kubectl create -f replicaset.yaml
+
+kubectl get rs
+
+kubectl create -f deployment.yaml
+
+kubectl get deployment
+
+kubectl set image deployment/myapp-deployment httpd-container=httpd:latest
+
+kubectl create -f service_clusterIP.yaml
+
+ kubectl get svc
+
+ kubectl get pods,svc,rs,deployment
+
+ ------
+
+ Project: Voting-App:
+
+ Docker Run --links
+
+ docker run -d --name=redis redis
+
+ docker run -d --name=db postgres:9.4
+
+ docker run -d --name=vote -p 5000:80 --link redis:redis voting-app
+
+ docker run -d --name=result -p 5001:80 --link db:db result-app
+
+ docker run -d --name=worker --link db:db --link redis:redis worker
+
+
+ > Project Steps:
+
+ Deploy Pods
+
+ Create services (ClusterIP)
+  redis
+  db
+Create service (NodePort)
+ voting-app
+ result-app
+
+
+ https://github.com/dockersamples/example-voting-app
